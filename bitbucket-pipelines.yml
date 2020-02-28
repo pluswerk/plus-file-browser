@@ -9,7 +9,7 @@ definitions:
         script:
           - composer install -o --no-progress --no-ansi --no-interaction --classmap-authoritative
         artifacts:
-          - ./.Build/**
+          - .Build/**
     - parallel: &test
         - step:
             name: Grumphp
