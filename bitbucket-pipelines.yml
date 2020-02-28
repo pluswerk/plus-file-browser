@@ -1,0 +1,23 @@
+definitions:
+
+  steps:
+    - step: &pretestbuild
+        name: Pre test build
+        image: kanti/buildy:7.2
+        caches:
+          - composer
+        script:
+          - composer install -o --no-progress --no-ansi --no-interaction --classmap-authoritative
+        artifacts:
+          - ./.Build/**
+    - parallel: &test
+        - step:
+            name: Unit Tests
+            image: kanti/buildy:7.2
+            script:
+              - ./.Build/bin/phpunit
+
+pipelines:
+  default:
+    - step: *pretestbuild
+    - parallel: *test
