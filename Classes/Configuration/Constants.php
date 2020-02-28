@@ -6,5 +6,5 @@ namespace Pluswerk\PlusFileBrowser\Configuration;
 
 final class Constants
 {
-    public const FILE_BROWSER = 'kueiFileBrowser';
+    public const FILE_BROWSER = 'plusFileBrowser';
 }
