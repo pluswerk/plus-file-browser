@@ -12,6 +12,11 @@ definitions:
           - ./.Build/**
     - parallel: &test
         - step:
+            name: Grumphp
+            image: kanti/buildy:7.2
+            script:
+              - ./.Build/bin/grumphp run
+        - step:
             name: Unit Tests
             image: kanti/buildy:7.2
             script:
