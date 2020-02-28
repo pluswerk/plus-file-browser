@@ -12,7 +12,7 @@ use TYPO3\CMS\Recordlist\Browser\FileBrowser as T3FileBrowser;
 
 /**
  * This file browser extends the TYPO3 default FileBrowser to add an additional filter. This filter filters the folders,
- * which are configured in TypoScript config.tx_kueibase.tca.elementBrowser.allowedPaths.[table].[field], that only
+ * which are configured in TypoScript config.tx_plusfilebrowser.tca.elementBrowser.allowedPaths.[table].[field], that only
  * these folders are shown in the file browser.
  *
  * Class PersonImageFileBrowser
@@ -47,7 +47,7 @@ final class FileBrowser extends T3FileBrowser
         $backendUser = $this->getBackendUser();
         $storages = $backendUser->getFileStorages();
 
-        // Fetch allowed paths from TypoScript configuration (config.tx_kueibase.tca.elementBrowser.allowedPaths.[table].[field])
+        // Fetch allowed paths from TypoScript configuration (config.tx_plusfilebrowser.tca.elementBrowser.allowedPaths.[table].[field])
         $allowedPaths = GeneralUtility::makeInstance(TypoScriptConfiguration::class)->getAllowedPaths(
             $this->fileBrowserUtility->fetchTable($this->bparams),
             $this->fileBrowserUtility->fetchField($this->bparams)

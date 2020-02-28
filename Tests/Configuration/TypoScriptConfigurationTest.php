@@ -45,7 +45,7 @@ final class TypoScriptConfigurationTest extends UnitTestCase
 
         $this->configurationManager->expects($this->once())
                                    ->method('getConfiguration')
-                                   ->with(ConfigurationManager::CONFIGURATION_TYPE_FULL_TYPOSCRIPT, 'KueiBase')
+                                   ->with(ConfigurationManager::CONFIGURATION_TYPE_FULL_TYPOSCRIPT, 'PlusFileBrowser')
                                    ->willReturn($configuration);
 
         $this->assertSame($expectedPathsArray, $extConf->getAllowedPaths($table, $field));
@@ -66,7 +66,7 @@ final class TypoScriptConfigurationTest extends UnitTestCase
                 'field' => 'image',
                 'configuration' => [
                     'config.' => [
-                        'tx_kueibase.' => [
+                        'tx_plusfilebrowser.' => [
                             'tca.' => [
                                 'elementBrowser.' => [
                                     'allowedPaths.' => [

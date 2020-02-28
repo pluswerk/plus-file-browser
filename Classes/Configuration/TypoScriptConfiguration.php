@@ -43,7 +43,7 @@ final class TypoScriptConfiguration implements SingletonInterface
     public function getAllowedPaths(string $table, string $field): array
     {
         $conf = $this->getConfiguration();
-        return array_filter(GeneralUtility::trimExplode(',', $conf['config.']['tx_kueibase.']['tca.']['elementBrowser.']['allowedPaths.'][$table . '.'][$field] ?? ''));
+        return array_filter(GeneralUtility::trimExplode(',', $conf['config.']['tx_plusfilebrowser.']['tca.']['elementBrowser.']['allowedPaths.'][$table . '.'][$field] ?? ''));
     }
 
     /**
@@ -54,7 +54,7 @@ final class TypoScriptConfiguration implements SingletonInterface
     {
         if (empty($this->config)) {
             $configurationManager = $this->objectManager->get(ConfigurationManager::class);
-            $this->config = $configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_FULL_TYPOSCRIPT, 'KueiBase');
+            $this->config = $configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_FULL_TYPOSCRIPT, 'PlusFileBrowser');
         }
         return $this->config;
     }

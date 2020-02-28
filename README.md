@@ -44,7 +44,7 @@ For each field a comma separated list of storage path combination can be configu
 
 The following example configures the folder /some_images/ in storage with uid=1 and folder /some_other/images/folder/ in storage with uid=2 to be shown in file browser.
 ```text
-config.tx_kueibase {
+config.tx_plusfilebrowser {
   tca {
     elementBrowser {
       allowedPaths {
