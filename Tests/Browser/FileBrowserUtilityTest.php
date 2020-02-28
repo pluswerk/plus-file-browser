@@ -40,8 +40,8 @@ final class FileBrowserUtilityTest extends UnitTestCase
     {
         return [
             [
-                'expectedTable' => 'tx_highereducationpackage_domain_model_person',
-                'params' => '|||gif,jpg,jpeg,png,svg,pdf|data-2-tx_highereducationpackage_domain_model_person-NEW5e57de779e568738120572-image-sys_file_reference|inline.checkUniqueElement||inline.importElement',
+                'expectedTable' => 'tx_someextension_domain_model_thing',
+                'params' => '|||gif,jpg,jpeg,png,svg,pdf|data-2-tx_someextension_domain_model_thing-NEW5e57de779e568738120572-image-sys_file_reference|inline.checkUniqueElement||inline.importElement',
                 'expectedField' => 'image'
             ],
             [

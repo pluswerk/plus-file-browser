@@ -18,7 +18,9 @@ final class FilterCollectionBuilder
         $collection = GeneralUtility::makeInstance(FolderNameFilterCollection::class);
 
         foreach ($allowedPaths as $allowedPath) {
+
             $path = GeneralUtility::makeInstance(FilterPath::class, $allowedPath);
+
             if ($collection->filterExistsForStorage($path->storageUid())) {
                 $collection->getFilterForStorage($path->storageUid())->addPath($path);
             } else {

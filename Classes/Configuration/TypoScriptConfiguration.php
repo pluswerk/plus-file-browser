@@ -32,7 +32,7 @@ final class TypoScriptConfiguration implements SingletonInterface
     }
 
     /**
-     * Get array of all paths, which should be shown in person image field element file browser.
+     * Get array of all paths, which should be shown in pluswerk file browser.
      *
      * @param string $table
      * @param string $field
@@ -43,7 +43,11 @@ final class TypoScriptConfiguration implements SingletonInterface
     public function getAllowedPaths(string $table, string $field): array
     {
         $conf = $this->getConfiguration();
-        return array_filter(GeneralUtility::trimExplode(',', $conf['config.']['tx_plusfilebrowser.']['tca.']['elementBrowser.']['allowedPaths.'][$table . '.'][$field] ?? ''));
+
+        return array_filter(GeneralUtility::trimExplode(
+            ',',
+            $conf['config.']['tx_plusfilebrowser.']['tca.']['elementBrowser.']['allowedPaths.'][$table . '.'][$field] ?? ''
+        ));
     }
 
     /**
@@ -54,8 +58,12 @@ final class TypoScriptConfiguration implements SingletonInterface
     {
         if (empty($this->config)) {
             $configurationManager = $this->objectManager->get(ConfigurationManager::class);
-            $this->config = $configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_FULL_TYPOSCRIPT, 'PlusFileBrowser');
+            $this->config = $configurationManager->getConfiguration(
+                ConfigurationManager::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
+                'PlusFileBrowser'
+            );
         }
+
         return $this->config;
     }
 }

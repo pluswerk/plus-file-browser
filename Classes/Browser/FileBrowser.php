@@ -15,7 +15,7 @@ use TYPO3\CMS\Recordlist\Browser\FileBrowser as T3FileBrowser;
  * which are configured in TypoScript config.tx_plusfilebrowser.tca.elementBrowser.allowedPaths.[table].[field], that only
  * these folders are shown in the file browser.
  *
- * Class PersonImageFileBrowser
+ * Class FileBrowser
  * @package Pluswerk\PlusFileBrowser\Browser
  */
 final class FileBrowser extends T3FileBrowser
@@ -26,7 +26,7 @@ final class FileBrowser extends T3FileBrowser
     private $fileBrowserUtility;
 
     /**
-     * PersonImageFileBrowser constructor.
+     * FileBrowser constructor.
      */
     public function __construct()
     {
@@ -47,7 +47,8 @@ final class FileBrowser extends T3FileBrowser
         $backendUser = $this->getBackendUser();
         $storages = $backendUser->getFileStorages();
 
-        // Fetch allowed paths from TypoScript configuration (config.tx_plusfilebrowser.tca.elementBrowser.allowedPaths.[table].[field])
+        // Fetch allowed paths from TypoScript configuration
+        // (config.tx_plusfilebrowser.tca.elementBrowser.allowedPaths.[table].[field])
         $allowedPaths = GeneralUtility::makeInstance(TypoScriptConfiguration::class)->getAllowedPaths(
             $this->fileBrowserUtility->fetchTable($this->bparams),
             $this->fileBrowserUtility->fetchField($this->bparams)
@@ -61,7 +62,12 @@ final class FileBrowser extends T3FileBrowser
         /** @var \TYPO3\CMS\Core\Resource\ResourceStorage $storage */
         foreach ($storages as $storage) {
             if ($collection->filterExistsForStorage($storage->getUid())) {
-                $storage->addFileAndFolderNameFilter([$collection->getFilterForStorage($storage->getUid()), 'filterFolderNames']);
+                $storage->addFileAndFolderNameFilter(
+                    [
+                        $collection->getFilterForStorage($storage->getUid()),
+                        'filterFolderNames'
+                    ]
+                );
             }
         }
 
@@ -71,18 +77,17 @@ final class FileBrowser extends T3FileBrowser
 
     /**
      * Returns the url parameters for the urls in the file browser. Needs to be overwritten to ensure always the
-     * person image file browser is used.
+     * pluswerk file browser is used.
      *
      * @param array $values Array of values to include into the parameters
      * @return string[] Array of parameters which have to be added to URLs
      */
-    public function getUrlParameters(array $values)
+    public function getUrlParameters(array $values): array
     {
-        return [
-            // Use the person image file browser name for all urls in file browser.
-            'mode' => Constants::FILE_BROWSER,
-            'expandFolder' => $values['identifier'] ?? $this->expandFolder,
-            'bparams' => $this->bparams
-        ];
+        $parentArray = parent::getUrlParameters($values);
+        // Use the pluswerk file browser name for all urls in file browser.
+        $parentArray['mode'] = Constants::FILE_BROWSER;
+
+        return $parentArray;
     }
 }

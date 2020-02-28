@@ -62,7 +62,7 @@ final class TypoScriptConfigurationTest extends UnitTestCase
                     '2:/path/three/',
                     '3:/path/four/',
                 ],
-                'table' => 'tx_highereducationpackage_domain_model_person',
+                'table' => 'tx_someextension_domain_model_thing',
                 'field' => 'image',
                 'configuration' => [
                     'config.' => [
@@ -70,7 +70,7 @@ final class TypoScriptConfigurationTest extends UnitTestCase
                             'tca.' => [
                                 'elementBrowser.' => [
                                     'allowedPaths.' => [
-                                        'tx_highereducationpackage_domain_model_person.' => [
+                                        'tx_someextension_domain_model_thing.' => [
                                             'image' => '1:/path/one/,2:/path/two/,2:/path/three/,3:/path/four/'
                                         ]
                                     ]

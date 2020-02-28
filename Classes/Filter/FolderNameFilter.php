@@ -46,13 +46,18 @@ final class FolderNameFilter
      *
      * @return bool|int
      */
-    public function filterFolderNames($itemName, $itemIdentifier, $parentIdentifier, array $additionalInformation, DriverInterface $driverInstance)
-    {
+    public function filterFolderNames(
+        $itemName,
+        $itemIdentifier,
+        $parentIdentifier,
+        array $additionalInformation,
+        DriverInterface $driverInstance
+    ) {
         if ($this->matchesIdentifier($itemIdentifier) || $this->matchesParentIdentifier($parentIdentifier)) {
             return true;
-        } else {
-            return -1;
         }
+
+        return -1;
     }
 
     /**
@@ -66,20 +71,24 @@ final class FolderNameFilter
     private function matchesIdentifier(string $identifier): bool
     {
         foreach ($this->allowedPaths as $allowedPath) {
+
             if (preg_match('%^' . $allowedPath->path() . '$%', $identifier)) {
                 return true;
             }
         }
+
         return false;
     }
 
     private function matchesParentIdentifier(string $parentIdentifier): bool
     {
         foreach ($this->allowedPaths as $allowedPath) {
+
             if (preg_match('%^' . $allowedPath->path() . '%', $parentIdentifier)) {
                 return true;
             }
         }
+
         return false;
     }
 }

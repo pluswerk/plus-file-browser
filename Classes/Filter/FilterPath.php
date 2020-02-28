@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Pluswerk\PlusFileBrowser\Filter;
 
-use Pluswerk\PlusFileBrowser\Filter\InvalidFilterPathException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final class FilterPath
@@ -36,10 +35,13 @@ final class FilterPath
         if (strpos($pathString, ':') === false) {
             throw new InvalidFilterPathException('The filter path must be in format [storgageUid]:[relativePathToStorage]');
         }
+
         $pathArray = GeneralUtility::trimExplode(':', $pathString);
+
         if ($pathArray[1] === '' || $pathArray[0] === '') {
             throw new InvalidFilterPathException('The filter path must be in format [storgageUid]:[relativePathToStorage]');
         }
+
         $this->storageUid = (int)($pathArray[0] ?? 0);
         $this->path = (string)($pathArray[1] ?? '');
     }

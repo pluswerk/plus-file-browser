@@ -13,9 +13,7 @@ final class FileBrowserUtility
      */
     public function fetchTable(string $params): string
     {
-        $params = explode('|', $params);
-        $paramsValues = explode('-', $params[4]);
-        return $paramsValues[2];
+        return $this->getParamsValuesArray($params)[2];
     }
 
     /**
@@ -25,8 +23,17 @@ final class FileBrowserUtility
      */
     public function fetchField($params): string
     {
+        return $this->getParamsValuesArray($params)[4];
+    }
+
+    /**
+     * @param $params
+     *
+     * @return array
+     */
+    private function getParamsValuesArray($params): array
+    {
         $params = explode('|', $params);
-        $paramsValues = explode('-', $params[4]);
-        return $paramsValues[4];
+        return explode('-', $params[4]);
     }
 }

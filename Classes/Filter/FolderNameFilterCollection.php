@@ -23,7 +23,7 @@ final class FolderNameFilterCollection
     /**
      * @param $storageUid
      *
-     * @return mixed
+     * @return FolderNameFilter
      */
     public function getFilterForStorage($storageUid): FolderNameFilter
     {
