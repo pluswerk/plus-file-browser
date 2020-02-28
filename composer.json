@@ -6,6 +6,7 @@
     "TYPO3 CMS"
   ],
   "require": {
+    "php": ">=7.2",
     "typo3/cms-core": "^9.5"
   },
   "require-dev": {
@@ -32,5 +33,11 @@
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
       "web-dir": ".Build/Web"
     }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "mkdir -p .Build/Web/typo3conf/ext/",
+      "[ -L .Build/Web/typo3conf/ext/plus_file_browser ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/plus_file_browser"
+    ]
   }
 }
