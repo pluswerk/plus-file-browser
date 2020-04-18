@@ -1,0 +1,21 @@
+language: php
+
+php:
+  - "7.2"
+  - "7.3"
+  - "7.4"
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+env:
+  matrix:
+    - TYPO3_VERSION="^9.5"
+    - TYPO3_VERSION="^10.3"
+
+install: composer require typo3/cms-core:$TYPO3_VERSION
+
+script:
+  - .Build/bin/grumphp run
+  - .Build/bin/phpunit
