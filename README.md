@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pluswerk/plus-file-browser.svg?branch=master)](https://travis-ci.org/github/pluswerk/plus-file-browser)
+
 # plus_file_browser
 
 ## What does it do
